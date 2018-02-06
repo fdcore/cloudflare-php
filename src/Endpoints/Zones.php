@@ -179,4 +179,23 @@ class Zones implements API
 
         return false;
     }
+
+    /**
+     * Set Always Use HTTPS
+     * @param string $zoneID
+     * @param bool $enable
+     * @return bool
+     */
+    public function setAlwaysUseHTTPS(string $zoneID, bool $enable = false): bool
+    {
+        $response = $this->adapter->patch('zones/' . $zoneID . '/settings/always_use_https', [], ['value' => $enable ? 'on' : 'off']);
+        $body = json_decode($response->getBody());
+
+        if ($body->success) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
