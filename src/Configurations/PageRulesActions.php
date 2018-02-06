@@ -133,8 +133,10 @@ class PageRulesActions implements Configurations
         }
 
         $this->addConfigurationOption('forwarding_url', [
-            'status_code' => $statusCode,
-            'url' => $forwardingUrl,
+            'value' => [
+                'status_code' => $statusCode,
+                'url' => $forwardingUrl,
+            ]
         ]);
     }
 
